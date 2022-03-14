@@ -1,8 +1,6 @@
 pipeline {
     agent any
-    tools {
-         'maven-3.6.3', type: 'maven'
-         'jdk', type: 'jdk'
+    tool name: 'maven-3.6.3', type: 'maven'
     }
     stages {
         stage ('Initialize') {
