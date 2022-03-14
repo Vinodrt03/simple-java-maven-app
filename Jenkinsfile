@@ -1,19 +1,19 @@
 pipeline {
     agent any
     tools {
-        tool name: 'Maven', type: 'maven'"
+        maven "MAVEN"
         jdk "JDK"
     }
     stages {
         stage('Initialize'){
             steps{
                 echo "PATH = ${M2_HOME}/bin:${PATH}"
-                echo "M2_HOME = /usr/maven/"
+                echo "M2_HOME = /usr/share/maven/"
             }
         }
         stage('Build') {
             steps {
-                dir("/var/lib/jenkins/workspace/Pipeline Sample_java_App/src") {
+                dir("/var/lib/jenkins/workspace/demopipelinetask/my-app") {
                 sh 'mvn -B -DskipTests clean package'
                 }
             }
