@@ -4,7 +4,7 @@ pipeline {
         AWS_ACCOUNT_ID="453304093030"
         AWS_DEFAULT_REGION="ap-south-1" 
         IMAGE_REPO_NAME="java-project"
-        IMAGE_TAG="JAVA.1.2.3-relase"
+        IMAGE_TAG="JavaOps"
         REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
     }
    
