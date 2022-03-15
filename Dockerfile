@@ -1,7 +1,4 @@
-#Base Image
-FROM openjdk:8
-COPY . /src/java
-COPY pom.xml /src/java
-WORKDIR /src/java
-RUN ["javac", "JavaExample.java"]
-ENTRYPOINT ["java", "JavaExample"]
+FROM maven:3.6.0-jdk-11-slim AS build
+COPY src /home/app/src
+COPY pom.xml /home/app
+RUN mvn -f /home/app/pom.xml clean package
