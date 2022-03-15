@@ -5,5 +5,5 @@ RUN mvn dependency:go-offline -B
 RUN mvn package
 FROM openjdk:8u171-jre-alpine
 WORKDIR /usr/local
-COPY --from=maven target/simple-java-maven-app-*.jar ./usr/local/simple-java-maven-app.jar
+COPY --from=maven target /usr/local/simple-java-maven-app-*.jar ./usr/local/simple-java-maven-app.jar
 CMD ["java", "-jar", "./usr/local/simple-java-maven-app.jar"]
