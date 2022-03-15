@@ -4,7 +4,7 @@ pipeline {
         AWS_ACCOUNT_ID="453304093030"
         AWS_DEFAULT_REGION="ap-south-1" 
         IMAGE_REPO_NAME="java-project"
-        IMAGE_TAG="Latest"
+        IMAGE_TAG="JAVA.1.2.3-relase"
         REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
     }
    
@@ -19,7 +19,7 @@ pipeline {
             }
         }
         
-        stage('Cloning Git') {
+        stage('Checkout-Git') {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Vinodrt03/simple-java-maven-app.git']]])    
             }
