@@ -1,15 +1,9 @@
-#
-# Build stage
-#
-FROM maven:3.6.3-jdk-11-slim AS build
-COPY src /home/app/src
-COPY pom.xml /home/app
-RUN mvn -f /home/app/pom.xml clean package
-
-#
-# Package stage
-#
-FROM openjdk:11-jre-slim
-COPY --from=build /home/app/target/*.jar /usr/local/lib/*.jar
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","/usr/local/lib/*.jar"]
+FROM openjdk:8-jdk
+MAINTAINER vinod rawat (myemail@gmail.com)
+RUN apt-get update
+RUN apt-get install -y maven
+COPY pom.xml /usr/local/service/pom.xml
+COPY src /usr/local/service/src
+WORKDIR /usr/local/service
+RUN mvn package
+CMD ["java","-jar","target/docker-service-1.0-SNAPSHOT-jar-with-dependencies.jar"]
