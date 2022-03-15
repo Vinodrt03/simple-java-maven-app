@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk
+FROM openjdk:11-jdk
 MAINTAINER vinod rawat (myemail@gmail.com)
 RUN apt-get update
 RUN apt-get install -y maven
